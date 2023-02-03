@@ -1,0 +1,160 @@
+import java.util.*;
+import java.io.*;
+
+public class Main {
+
+          public static void main(String[] args) {
+
+                    Scanner sc = new Scanner(System.in);
+                    System.out.println("Code Service Hatchback Sedan SUV\nBS01 Basic Servicing ₹2000 ₹ 4000 ₹ 5000\nEF01 Engine Fixing ₹ 5000 ₹ 8000 ₹ 10000\nCF01 Clutch Fixing ₹ 2000 ₹ 4000 ₹ 6000\nBF01 Brake Fixing ₹ 1000 ₹ 1500 ₹ 2500\nGF01 Gear Fixing ₹ 3000 ₹ 6000 ₹ 8000\n");
+                    System.out.println("Please Enter the type of car");
+                    String typeOfCar = sc.next();
+                    System.out.println("Please Enter the Service codes for the required services\n\"CSV format\"");
+                    String services = sc.next();
+                    generateBill(typeOfCar, services);
+                    System.out.println(Services.bill);
+                    if (Services.bill >= 10000)
+                              System.out.println("Complimentary Cleaning is Provided");
+                    System.out.println("Thank You!");
+          }
+
+          public static void generateBill(String car, String services) {
+                    String[] servArray = services.split("[,]");
+                    Services amount = null;
+                    if (car.equals("Hatchback")) {
+                              amount = new Hatchback();
+                    } else if (car.equals("Sedan")) {
+                              amount = new Sedan();
+                    } else if (car.equals("SUV")) {
+                              amount = new SUV();
+                    }
+
+                    for (String service : servArray) {
+                              if (service.equals("BS01"))
+                                        amount.BS01();
+                              else if (service.equals("EF01"))
+                                        amount.EF01();
+                              else if (service.equals("CF01"))
+                                        amount.CF01();
+                              else if (service.equals("BF01"))
+                                        amount.BF01();
+                              else if (service.equals("GF01"))
+                                        amount.GF01();
+                              // System.out.println(services);
+                    }
+                    // System.out.println(servArray.length);
+          }
+}
+
+abstract class Services {
+          public static int bill = 0;
+
+          public abstract void BS01();
+
+          public abstract void EF01();
+
+          public abstract void CF01();
+
+          public abstract void BF01();
+
+          public abstract void GF01();
+}
+
+class Hatchback extends Services {
+          int BS01 = 2000;
+          int EF01 = 5000;
+          int CF01 = 2000;
+          int BF01 = 1000;
+          int GF01 = 3000;
+
+          public void BS01() {
+                    System.out.println("Charges for Basic Servicing - Rs" + BS01);
+                    bill += BS01;
+          }
+
+          public void EF01() {
+                    System.out.println("Charges for Engine Fixing - Rs" + EF01);
+                    bill += EF01;
+          }
+
+          public void CF01() {
+                    System.out.println("Charges for Clutch Fixing - Rs" + CF01);
+                    bill += CF01;
+          }
+
+          public void BF01() {
+                    System.out.println("Charges for Brake Fixing - Rs" + BF01);
+                    bill += BF01;
+          }
+
+          public void GF01() {
+                    System.out.println("Charges for Gear Fixing - Rs" + GF01);
+                    bill += GF01;
+          }
+}
+
+class Sedan extends Services {
+          int BS01 = 4000;
+          int EF01 = 8000;
+          int CF01 = 4000;
+          int BF01 = 1500;
+          int GF01 = 6000;
+
+          public void BS01() {
+                    System.out.println("Charges for Basic Servicing - Rs" + BS01);
+                    bill += BS01;
+          }
+
+          public void EF01() {
+                    System.out.println("Charges for Engine Fixing - Rs" + EF01);
+                    bill += EF01;
+          }
+
+          public void CF01() {
+                    System.out.println("Charges for Clutch Fixing - Rs" + CF01);
+                    bill += CF01;
+          }
+
+          public void BF01() {
+                    System.out.println("Charges for Brake Fixing - Rs" + BF01);
+                    bill += BF01;
+          }
+
+          public void GF01() {
+                    System.out.println("Charges for Gear Fixing - Rs" + GF01);
+                    bill += GF01;
+          }
+}
+
+class SUV extends Services {
+          int BS01 = 5000;
+          int EF01 = 10000;
+          int CF01 = 6000;
+          int BF01 = 2500;
+          int GF01 = 8000;
+
+          public void BS01() {
+                    System.out.println("Charges for Basic Servicing - Rs" + BS01);
+                    bill += BS01;
+          }
+
+          public void EF01() {
+                    System.out.println("Charges for Engine Fixing - Rs" + EF01);
+                    bill += EF01;
+          }
+
+          public void CF01() {
+                    System.out.println("Charges for Clutch Fixing - Rs" + CF01);
+                    bill += CF01;
+          }
+
+          public void BF01() {
+                    System.out.println("Charges for Brake Fixing - Rs" + BF01);
+                    bill += BF01;
+          }
+
+          public void GF01() {
+                    System.out.println("Charges for Gear Fixing - Rs" + GF01);
+                    bill += GF01;
+          }
+}
